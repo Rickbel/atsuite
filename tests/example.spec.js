@@ -1,19 +1,15 @@
-// @ts-check
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
-
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test('test', async ({ page }) => {
+  await page.goto('https://codepen.io/');
+  await page.getByRole('link', { name: 'Search Pens' }).click();
+  await page.locator('iframe[src="https\\:\\/\\/challenges\\.cloudflare\\.com\\/cdn-cgi\\/challenge-platform\\/h\\/g\\/turnstile\\/if\\/ov2\\/av0\\/rcv\\/ozb1l\\/0x4AAAAAAADnPIDROrmt1Wwj\\/light\\/fbE\\/new\\/normal\\/auto\\/"]').contentFrame().locator('body').click();
+  await page.goto('https://codepen.io/');
+  await page.locator('[data-test-id="search-input"]').click();
+  await page.locator('[data-test-id="search-input"]').fill('chicken');
+  await page.locator('[data-test-id="search-input"]').press('Enter');
+  await page.locator('iframe[src="https\\:\\/\\/challenges\\.cloudflare\\.com\\/cdn-cgi\\/challenge-platform\\/h\\/g\\/turnstile\\/if\\/ov2\\/av0\\/rcv\\/50ry8\\/0x4AAAAAAADnPIDROrmt1Wwj\\/light\\/fbE\\/new\\/normal\\/auto\\/"]').contentFrame().locator('body').click();
+  await page.goto('https://codepen.io/search/pens?q=chicken');
+  await page.locator('iframe[src="https\\:\\/\\/challenges\\.cloudflare\\.com\\/cdn-cgi\\/challenge-platform\\/h\\/g\\/turnstile\\/if\\/ov2\\/av0\\/rcv\\/mjszy\\/0x4AAAAAAADnPIDROrmt1Wwj\\/light\\/fbE\\/new\\/normal\\/auto\\/"]').contentFrame().locator('body').click();
+  await page.goto('https://codepen.io/');
 });
